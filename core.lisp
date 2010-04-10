@@ -8,8 +8,8 @@ This library is free software; you can redistribute it and/or
 modify it under the terms of the Lisp Lesser GNU Public License
  (http://opensource.franz.com/preamble.html), known as the LLGPL.
 
-This library is distributed  WITHOUT ANY WARRANTY; without even 
-the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+This library is distributed  WITHOUT ANY WARRANTY; without even
+the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 See the Lisp Lesser GNU Public License for more details.
 
@@ -41,21 +41,21 @@ reuse the SYMBOL-VALUE of NAME.  Otherwise, DEFCONSTANT it again,
 resulting in implementation-specific behavior."
    `(defconstant ,name
       (if (not (boundp ',name))
-	  ,value
-	  (let ((value ,value))
-	    (if (equal value (symbol-value ',name))
-		(symbol-value ',name)
-		value)))
+          ,value
+          (let ((value ,value))
+            (if (equal value (symbol-value ',name))
+                (symbol-value ',name)
+                value)))
       ,@(when docstring (list docstring)))))
 
 (defun test-setup (&optional drib)
-  #+(and allegro ide (or (not its-alive!) 
+  #+(and allegro ide (or (not its-alive!)
                        debugging-alive!))
-  (progn 
+  (progn
     (ide.base::find-new-prompt-command
      (cg.base::find-window :listener-frame)))
   (when drib
-    (dribble (merge-pathnames 
+    (dribble (merge-pathnames
               (make-pathname :name drib :type "TXT")
               (project-path)))))
 

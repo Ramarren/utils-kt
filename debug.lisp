@@ -10,8 +10,8 @@ This library is free software; you can redistribute it and/or
 modify it under the terms of the Lisp Lesser GNU Public License
  (http://opensource.franz.com/preamble.html), known as the LLGPL.
 
-This library is distributed  WITHOUT ANY WARRANTY; without even 
-the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+This library is distributed  WITHOUT ANY WARRANTY; without even
+the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 See the Lisp Lesser GNU Public License for more details.
 
@@ -31,7 +31,7 @@ See the Lisp Lesser GNU Public License for more details.
   (setf *count* nil
     *stop* nil
     *dbg* nil)
-  
+
  (print "----------UTILSRESET----------------------------------"))
 
 ;------------- counting ---------------------------
@@ -47,7 +47,7 @@ See the Lisp Lesser GNU Public License for more details.
 
 (defun count-of (key)
   (cdr (assoc key *count* :key 'car)))
-  
+
 (defun count-clear (announce &rest msg)
   (declare (ignorable msg))
   (when announce (format t "~&count-clear > ~a" msg))
@@ -79,7 +79,7 @@ See the Lisp Lesser GNU Public License for more details.
         (push (cons keys 1) *count*))))
 
 (defun show-count (clearp &rest msg &aux announced)
-  
+
   (let ((res (sort (copy-list *count*) (lambda (v1 v2)
                                            (let ((v1$ (symbol-name (caar v1)))
                                                  (v2$ (symbol-name (caar v2))))
@@ -96,7 +96,7 @@ See the Lisp Lesser GNU Public License for more details.
                     (format t "~&Counts after: clearp ~a, length ~d: ~s" clearp (length *count*) msg))
            (format t "~&~4d ... ~2d ... ~(~{~a ~}~)" running occs (car entry))))
   (when clearp (count-clear announced "show-count" )))
-               
+
 ;-------------------- timex ---------------------------------
 
 (export! timex)
@@ -149,4 +149,3 @@ See the Lisp Lesser GNU Public License for more details.
   (when (boundp '*clock*)
     (print (list* :delta (- now (cdr *clock*)) :tot-elap (- now (car *clock*)) :at keys))
     (setf (cdr *clock*) now)))
-

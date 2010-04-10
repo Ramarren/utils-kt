@@ -8,8 +8,8 @@ This library is free software; you can redistribute it and/or
 modify it under the terms of the Lisp Lesser GNU Public License
  (http://opensource.franz.com/preamble.html), known as the LLGPL.
 
-This library is distributed  WITHOUT ANY WARRANTY; without even 
-the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+This library is distributed  WITHOUT ANY WARRANTY; without even
+the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 See the Lisp Lesser GNU Public License for more details.
 
@@ -32,12 +32,12 @@ See the Lisp Lesser GNU Public License for more details.
     #+sbcl #:sb-mop
     #+openmcl-partial-mop #:openmcl-mop
     #+(and mcl (not openmcl-partial-mop))  #:ccl)
-  (:export 
+  (:export
     #:export!
     #:utils-kt-reset
     #:count-it #:count-of #:with-counts
     #:wdbg #:maptimes #:bwhen #:bif #:xor
-    #:with-dynamic-fn #:last1 #:packed-flat! #:with-metrics 
+    #:with-dynamic-fn #:last1 #:packed-flat! #:with-metrics
     #:shortc
     #:intern$
     #:define-constant #:*count* #:*stop*

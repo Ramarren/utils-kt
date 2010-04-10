@@ -9,8 +9,8 @@ This library is free software; you can redistribute it and/or
 modify it under the terms of the Lisp Lesser GNU Public License
  (http://opensource.franz.com/preamble.html), known as the LLGPL.
 
-This library is distributed  WITHOUT ANY WARRANTY; without even 
-the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+This library is distributed  WITHOUT ANY WARRANTY; without even
+the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 See the Lisp Lesser GNU Public License for more details.
 
@@ -42,7 +42,7 @@ See the Lisp Lesser GNU Public License for more details.
                             (member cell visited))
                    (break "list-flatten! detects infinite list: cell ~a, visited ~a" cell visited))
                  (push cell visited)
-                 
+
                  (when cell
                    (if (consp (car cell))
                       (link (car cell))
@@ -124,7 +124,7 @@ See the Lisp Lesser GNU Public License for more details.
      (if ,bindvar
          ,yup
        ,nope)))
-  
+
 (defmacro bif ((bindvar boundform) yup &optional nope)
   `(let ((,bindvar ,boundform))
       (if ,bindvar
@@ -214,7 +214,7 @@ See the Lisp Lesser GNU Public License for more details.
 
 ;; Returns a function that generates an elements from ALL each time it
 ;; is called. When a certain element is generated it will take at
-;; least DECENT-INTERVAL calls before it is generated again.  
+;; least DECENT-INTERVAL calls before it is generated again.
 ;;
 ;; note: order of ALL is important for first few calls, could be fixed
 
@@ -257,4 +257,3 @@ See the Lisp Lesser GNU Public License for more details.
                ;(print (list "without-repeating makes new gen" key :all-len (length all) :int decent-interval))
                (setf (gethash key *without-repeating-generators*)
                  (without-repeating-generator decent-interval all))))))
-

@@ -9,8 +9,8 @@ This library is free software; you can redistribute it and/or
 modify it under the terms of the Lisp Lesser GNU Public License
  (http://opensource.franz.com/preamble.html), known as the LLGPL.
 
-This library is distributed  WITHOUT ANY WARRANTY; without even 
-the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+This library is distributed  WITHOUT ANY WARRANTY; without even
+the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 See the Lisp Lesser GNU Public License for more details.
 
@@ -158,7 +158,7 @@ See the Lisp Lesser GNU Public License for more details.
       (progn
         (when show-files
           (format t "~&~v,8t~a counts:" depth (pathname-directory path)))
-        (let ((directory-lines          
+        (let ((directory-lines
                (loop for file in (directory path :directories-are-files nil)
                    for lines = (line-count file show-files max-depth no-semis (1+ depth))
                    when (and show-files (plusp lines))
@@ -224,4 +224,3 @@ See the Lisp Lesser GNU Public License for more details.
     (lambda (t1-node)
       (when (tree-includes t1-node t2 :test test)
           (return-from tree-intersect t1-node)))))
-

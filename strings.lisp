@@ -9,8 +9,8 @@ This library is free software; you can redistribute it and/or
 modify it under the terms of the Lisp Lesser GNU Public License
  (http://opensource.franz.com/preamble.html), known as the LLGPL.
 
-This library is distributed  WITHOUT ANY WARRANTY; without even 
-the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+This library is distributed  WITHOUT ANY WARRANTY; without even
+the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 See the Lisp Lesser GNU Public License for more details.
 
@@ -213,7 +213,7 @@ See the Lisp Lesser GNU Public License for more details.
 (defmacro member$ (item list &rest kws)
    `(member ,item ,list :test #'string= ,@kws))
 
-(defun match-left$ (a b) 
+(defun match-left$ (a b)
   (string-equal a (subseq b 0 (length a))))
 
 (defparameter *return$* (conc$ (char$ #\return) (char$ #\linefeed)))

@@ -45,7 +45,7 @@
   (loop with state = istate
       and word
       for char = (read-char stream nil :eof)
-      when (eql char :eof) do (loop-finish) 
+      when (eql char :eof) do (loop-finish)
       do  (unless (or (and (or (eql char #\space) (eql char #\tab))
                         (eql state 'init))
                     (find state '(in-line-comment in-block-rem)))
@@ -75,7 +75,7 @@
               ((eql char #\#)
                (setf state 'got-octothorpe))
               ))
-            
+
             (in-string
              (cond
               ((eql char #\\)
@@ -87,7 +87,7 @@
              (let ((db (get db 'string (gensym))))
                (incf (get db 'count 0))
                (incf (get db 'char-count 0))))
-            
+
             (got-octothorpe
              (cond
               ((eql char #\|)
@@ -98,7 +98,7 @@
               (t (ecase istate
                    (init (setf state 'un-white))
                    (got-octothorpe (return-from c-analyze-file))))))
-            
+
             (in-block-rem
              (let ((db (get db 'comments (gensym))))
                (incf (get db 'char-count 0)))
@@ -111,7 +111,7 @@
                      (in-block-rem (return-from c-analyze-file))))))
               ((eql char #\#)
                (c-analyze-file db stream 'got-octothorpe))))
-            
+
             (in-word
              (if (or (alphanumericp char)
                    (eql char #\-)
@@ -127,10 +127,7 @@
                              (member sym *c-making*))
                        (incf (get db sym 0))))
                    (setf word nil)))))
-            
+
             (in-line-comment
              (when (eql char #\newline)
                (setf state 'init)))))))
-
-
-

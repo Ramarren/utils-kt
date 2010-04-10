@@ -1,4 +1,3 @@
-
 #|
 
 From: Erik Naggum (erik@naggum.no)
@@ -11,7 +10,7 @@ Date: 2004-01-19 04:24:43 PST
 | the top of my head, but I seem to recall someone (Erik? Tim? Other?)
 | saying they had done some work on a formal approach to an alternative
 | to XML/HTML/whatever.
-| 
+|
 | True that? If so, I am all ears.
 
   Really?  You are?  Maybe I didn't survive 2003 and this is some Hell
@@ -78,7 +77,7 @@ Date: 2004-01-19 04:24:43 PST
 
   Maybe I'll talk about SALT some other day.
 
--- 
+--
 Erik Naggum | Oslo, Norway
 
 Act from reason, and failure makes you rethink and study harder.
@@ -91,7 +90,7 @@ Act from faith, and failure makes you blame someone and push harder.
 ;;;(defstruct (juad jar jbr jcr jdr)
 
 
-  
+
 (defun qar (q) (car q))
 (defun (setf qar) (v q) (setf (car q) v))
 
@@ -169,7 +168,7 @@ Act from faith, and failure makes you blame someone and push harder.
                             . #2=(bar #1# (ding #2# "456"
                                             dong #2# "789"))))))
       (print '(traverse showing each type and data preceded by its depth))
-      
+
       (quad-traverse q (lambda (q depth)
                          (print (list depth (qar q)(qcr q)))))
       (print `(listify same ,(quad-tree q))))
@@ -182,7 +181,7 @@ Act from faith, and failure makes you blame someone and push harder.
                                   (mapcar 'qar (qups q)))))))))
 
 ;;;(defun tree-quad (tree)
-  
+
 
 (defun testq2 ()
   (let ((*print-circle* t))
@@ -193,7 +192,3 @@ Act from faith, and failure makes you blame someone and push harder.
       (quad-traverse q (lambda (q depth)
                          (print (list depth (qar q)
                                   (mapcar 'qar (qups q)))))))))
-
-
-              
-  
