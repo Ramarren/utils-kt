@@ -20,6 +20,18 @@ See the Lisp Lesser GNU Public License for more details.
 
 (in-package :utils-kt)
 
+(defvar *mpstart* (get-internal-real-time))
+
+(export! mpt)
+
+(defun mpt (&rest args)
+  ;(error "mprint")
+  (when (eq :start (car args))
+    (setf *mpstart* (get-internal-real-time) ))
+  (print (list* (- (get-internal-real-time) *mpstart*) args)))
+
+#+test
+(mpt :one 2 "3")
 
 (defvar *count* nil)
 (defvar *counting* nil)
@@ -52,6 +64,9 @@ See the Lisp Lesser GNU Public License for more details.
   (declare (ignorable msg))
   (when announce (format t "~&count-clear > ~a" msg))
   (setf *count* nil))
+
+(defun stop-check (&optional (where :unspecified))
+  (when *stop* (break "utils-kt *stopped* at ~a" where)))
 
 (defmacro count-it (&rest keys)
   (declare (ignorable keys))

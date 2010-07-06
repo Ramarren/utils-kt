@@ -20,7 +20,10 @@ See the Lisp Lesser GNU Public License for more details.
 (in-package :utils-kt)
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  (export '(eval-now! export! assocd rassoca class-proto brk)))
+  (export '(eval-now! export! assocd rassoca class-proto brk eo subseq-ex)))
+
+(defun subseq-ex (seq start end)
+  (subseq seq start (min end (length seq))))
 
 (defmacro wdbg (&body body)
   `(let ((*dbg* t))
@@ -28,6 +31,9 @@ See the Lisp Lesser GNU Public License for more details.
 
 (defun assocd (x y) (cdr (assoc x y)))
 (defun rassoca (x y) (car (assoc x y)))
+
+(defmacro eo (x y)
+  `(if (zerop (random 2)) ,x ,y))
 
 (defun class-proto (c)
   (let ((cc (find-class c)))
@@ -42,7 +48,7 @@ See the Lisp Lesser GNU Public License for more details.
                  (apply 'break args)))
 
 (defun find-after (x l)
-  (bIf (xm (member x l))
+  (bif (xm (member x l))
     (cadr xm)
     (brk "find-after ~a not member of ~a" x l)))
 
@@ -55,8 +61,10 @@ See the Lisp Lesser GNU Public License for more details.
         finally (brk "find-before ~a not member of ~a" x l)))
 
 (defun list-insert-after (list after new )
+  (assert (member after list)()"list-insert-after> after arg ~a not a member of list ~a" after list)
   (let* ((new-list (copy-list list))
          (m (member after new-list)))
+    (assert m)
     (rplacd m (cons new (cdr m)))
     new-list))
 
@@ -147,7 +155,7 @@ See the Lisp Lesser GNU Public License for more details.
           do (print (fifo-pop q)))))
 
 
-#+allegro
+#+allegrosaveit
 (defun line-count (path &optional show-files (max-depth most-positive-fixnum) no-semis (depth 0))
   (cond
    ((excl:file-directory-p path)
