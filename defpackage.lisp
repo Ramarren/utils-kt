@@ -96,4 +96,5 @@
    #:collect-if #:+return$+ #:u-day
    #:test-init #:time-of-day
    #:os-tickcount #:strloc$
-   #:subseq-ex #:eo #:mvb #:dsb #:mpt))
+   #:subseq-ex #:eo #:mvb #:dsb #:mpt
+   #:mm-ss))

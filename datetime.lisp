@@ -102,7 +102,6 @@ See the Lisp Lesser GNU Public License for more details.
       (if (= 12 hours) hours (mod hours 12))  ; JP 010911 since (mod 12 12) = 0, treat 12 as a special case.
       minutes (if (>= hours 12) "PM" "AM"))))
 
-
 (defun mdyy-yymd (d)
   (assert (eql 8 (length d)))
   (conc$ (right$ d 4) (left$ d 4)))
@@ -119,6 +118,13 @@ See the Lisp Lesser GNU Public License for more details.
       (mod hours 12) minutes
       (if (>= hours 12) "PM" "AM"))))
 
+(defun mm-ss (&optional (i-time (get-universal-time)))
+  (multiple-value-bind
+        (seconds minutes)
+      (decode-universal-time i-time)
+    (format nil "~2,d:~2,'0d"
+            minutes seconds)))
+
 (defun u-date (&optional (i-time (get-universal-time)))
   (multiple-value-bind
         (seconds minutes hours date month year day-of-week daylight-saving-time-p time-zone)
@@ -134,7 +140,7 @@ See the Lisp Lesser GNU Public License for more details.
       )))
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  (export '(u-day multiple-value-bind m/d/y mm/dd yyyy-mm-dd)))
+  (export '(u-day mm-ss multiple-value-bind m/d/y mm/dd yyyy-mm-dd)))
 
 (defun u-day (&optional (i-time (get-universal-time)))
   (multiple-value-bind
